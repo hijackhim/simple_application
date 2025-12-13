@@ -19,7 +19,8 @@
                                                             |-- Prometheus (metrics)
                                                             |-- Grafana (dashboards + alerts)
 
-*** I used Prometheus instead of Cloudwatch**
+*** I used Prometheus instead of Cloudwatch as i was not haivng the AWS account as my previous accounts are expired**
+**I have tested it on KIND and made it to be used on EKS**
 
 CI/CD Workflow Explanation
 CI (Continuous Integration)
