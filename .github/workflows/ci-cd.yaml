@@ -1,0 +1,40 @@
+name: CI-CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & Push
+        run: |
+          docker build -t himanshuofficial123/pythonapp:latest .
+          docker push himanshuofficial123/pythonapp:latest
+
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - name: Configure AWS
+  #       uses: aws-actions/configure-aws-credentials@v4
+  #       with:
+  #         role-to-assume: arn:aws:iam::105228010195:role/github-actions-eks
+  #         aws-region: ap-south-1
+
+  #     - name: Update kubeconfig
+  #       run: aws eks update-kubeconfig --name prod-eks --region ap-south-1
+
+  #     - name: Deploy
+  #       run: kubectl apply -f k8s/
