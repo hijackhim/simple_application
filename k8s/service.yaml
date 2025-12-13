@@ -4,9 +4,9 @@ metadata:
   name: pythonapp
   namespace: pythonapp
 spec:
-  type: ClusterIP
   selector:
     app: pythonapp
   ports:
     - port: 80
       targetPort: 8000
+  type: ClusterIP

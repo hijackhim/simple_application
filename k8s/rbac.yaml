@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: pythonapp
+  name: pythonapp-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pythonapp-rolebinding
+  namespace: pythonapp
+subjects:
+  - kind: ServiceAccount
+    name: pythonapp-sa
+    namespace: pythonapp
+roleRef:
+  kind: Role
+  name: pythonapp-role
+  apiGroup: rbac.authorization.k8s.io
