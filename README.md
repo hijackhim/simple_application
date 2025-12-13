@@ -62,6 +62,9 @@ aws eks update-kubeconfig --name pythonapp-eks --region ap-south-1
 **Deploy Application to EKS**
 kubectl apply -f k8s/
 
+**Verify:**
+kubectl get pods
+kubectl get svc
 
 ****Monitoring & Alert Design**
 Metrics Collected (via Prometheus)**
