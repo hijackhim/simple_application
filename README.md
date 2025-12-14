@@ -29,26 +29,26 @@ CI (Continuous Integration)
 **
 Triggered on every push to main:**
 
-1.	1.Checkout code
+1.	Checkout code
 
-2.	2.Build Docker image
+2.	Build Docker image
 
-3.	3.Tag image with Git commit SHA
+3.	Tag image with Git commit SHA
 
-4.	4.Push image to Docker Hub
+4.	Push image to Docker Hub
 
 **CD (Continuous Deployment)**
 
 <img width="1345" height="615" alt="Screenshot 2025-12-14 014502" src="https://github.com/user-attachments/assets/afd8c365-f08b-457b-a37d-4c94ccbe0f12" />
 
 
-1.	1.Configure AWS credentials via OIDC (no static keys)
+1.	Configure AWS credentials via OIDC (no static keys)
 
-2.	2.Update kubeconfig for EKS
+2.	Update kubeconfig for EKS
 
-3.	3.Update Kubernetes Deployment image
+3.	Update Kubernetes Deployment image
 
-4.	4.Kubernetes performs Rolling Update
+4.	Kubernetes performs Rolling Update
 
 
 **Provision EKS via Terraform**
