@@ -22,12 +22,12 @@
 *** I used Prometheus instead of Cloudwatch as i was not haivng the AWS account as my previous accounts are expired**
 **I have tested it on KIND and made it to be used on EKS**
 
-**CI/CD Workflow Explanation**
+>> **CI/CD Workflow Explanation**
 CI (Continuous Integration)
 <img width="1241" height="353" alt="Screenshot 2025-12-14 013835" src="https://github.com/user-attachments/assets/4accc10f-627d-4cf5-a1ee-cdbaba16f370" />
 
 **
-Triggered on every push to main:**
+>> Triggered on every push to main:**
 
 1.	Checkout code
 
@@ -37,7 +37,7 @@ Triggered on every push to main:**
 
 4.	Push image to Docker Hub
 
-**CD (Continuous Deployment)**
+>> **CD (Continuous Deployment)**
 
 <img width="1345" height="615" alt="Screenshot 2025-12-14 014502" src="https://github.com/user-attachments/assets/afd8c365-f08b-457b-a37d-4c94ccbe0f12" />
 
@@ -51,25 +51,24 @@ Triggered on every push to main:**
 4.	Kubernetes performs Rolling Update
 
 
-**Provision EKS via Terraform**
+>> **Provision EKS via Terraform**
 1.	1.terraform init
 2.	2.terraform apply
 
 
-**Update kubeconfig:**
+>> **Update kubeconfig:**
 
 aws eks update-kubeconfig --name pythonapp-eks --region ap-south-1
 
-**Deploy Application to EKS**
+>> **Deploy Application to EKS**
 kubectl apply -f k8s/
 
 **Verify:**
 kubectl get pods
 kubectl get svc
 
-****Monitoring & Alert Design**
-Metrics Collected (via Prometheus)**
-
+>> Monitoring & Alert Design
+> Metrics Collected (via Prometheus)
 
 1.	CPU usage
 
@@ -81,7 +80,7 @@ Metrics Collected (via Prometheus)**
 
 5.	Grafana Dashboard
 
-**Dashboard panels:**
+>> **Dashboard panels:**
 <img width="1154" height="658" alt="Screenshot 2025-12-14 014233" src="https://github.com/user-attachments/assets/56285bf6-f962-440f-9cbb-57cfe44205d6" />
 
 
@@ -93,28 +92,28 @@ Metrics Collected (via Prometheus)**
 
 4.	Restart count
 
-** Alerts (Grafana Alert Rules)**
+>> ** Alerts (Grafana Alert Rules)**
 
 1.	High CPU or Memory Usage
 <img width="1257" height="541" alt="Screenshot 2025-12-14 013208" src="https://github.com/user-attachments/assets/31b07170-d383-41da-b0c7-18f73ebec146" />
 
 2.	Trigger when CPU or memory usage exceeds threshold for 5 minutes
 
-**Health Check Failure**
+>> **Health Check Failure**
 <img width="1140" height="537" alt="Screenshot 2025-12-14 013533" src="https://github.com/user-attachments/assets/c0a3e687-fe37-42db-867f-6cec66f63cd1" />
 
 1.	Trigger when pod is not Ready
 
 2.	Trigger on repeated container restarts
 
-**Security Considerations**
+>> **Security Considerations**
 1.	IAM Least Privilege
 
 2.	EKS node groups have only required permissions
 
 3.	GitHub Actions uses OIDC IAM Role (no long-lived keys)
 
-** Secrets Management**
+>> ** Secrets Management**
 
 1.	No secrets stored in GitHub repo
 
@@ -130,7 +129,7 @@ Metrics Collected (via Prometheus)**
 
 7.	AWS authentication via role assumption
 
- **HTTPS Enforcement**
+>> **HTTPS Enforcement**
 
 In production, HTTPS would be enforced using:
 
