@@ -50,6 +50,22 @@ CI (Continuous Integration)
 
 4.	Kubernetes performs Rolling Update
 
+>> Rolling Update Strategy
+
+Configured in Kubernetes Deployment:
+
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 1
+
+
+This ensures:
+
+At least one pod is always running
+
+No traffic interruption during deployments
 
 >> **Provision EKS via Terraform**
 1.	1.terraform init
