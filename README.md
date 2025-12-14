@@ -22,7 +22,7 @@
 *** I used Prometheus instead of Cloudwatch as i was not haivng the AWS account as my previous accounts are expired**
 **I have tested it on KIND and made it to be used on EKS**
 
-CI/CD Workflow Explanation
+**CI/CD Workflow Explanation**
 CI (Continuous Integration)
 <img width="1241" height="353" alt="Screenshot 2025-12-14 013835" src="https://github.com/user-attachments/assets/4accc10f-627d-4cf5-a1ee-cdbaba16f370" />
 
